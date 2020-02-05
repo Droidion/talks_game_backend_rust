@@ -1,0 +1,19 @@
+[package]
+name = "talks_game_backend_rust"
+version = "0.1.0"
+authors = ["Denis Rodionov <zunh@protonmail.com>"]
+edition = "2018"
+
+[lib]
+name = "talks_game_backend_rust"
+path = "src/lib.rs"
+
+[[bin]]
+name = "talks_game_server"
+path = "src/main.rs"
+
+[dependencies]
+serde = "1.0.104"
+serde_derive = "1.0.104"
+serde_json = "1.0.46"
+uuid = { version = "0.8.1", features = ["serde", "v4"] }
