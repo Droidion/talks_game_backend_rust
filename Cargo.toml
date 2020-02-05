@@ -13,6 +13,7 @@ name = "talks_game_server"
 path = "src/main.rs"
 
 [dependencies]
+argonautica = "0.2.0"
 serde = "1.0.104"
 serde_derive = "1.0.104"
 serde_json = "1.0.46"
