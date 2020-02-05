@@ -27,3 +27,5 @@
 
 # File-based project format
 *.iws
+
+.env
