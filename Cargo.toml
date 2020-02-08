@@ -14,7 +14,8 @@ path = "src/main.rs"
 
 [dependencies]
 argonautica = "0.2.0"
-diesel = { version = "1.4.3", features = ["postgres"] }
+chrono = "0.4.10"
+diesel = { version = "1.4.3", features = ["postgres", "chrono"] }
 dotenv = "0.15.0"
 serde = "1.0.104"
 serde_derive = "1.0.104"
