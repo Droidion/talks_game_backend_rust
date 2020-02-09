@@ -18,6 +18,7 @@ chrono = { version = "0.4.10", features = ["serde"] }
 diesel = { version = "1.4.3", features = ["postgres", "chrono"] }
 dotenv = "0.15.0"
 redis = "0.15.1"
+rocket = "0.4.2"
 serde = "1.0.104"
 serde_derive = "1.0.104"
 serde_json = "1.0.46"

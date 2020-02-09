@@ -18,6 +18,7 @@ pub fn generate_uuid() -> String {
 pub fn generate_hash(password: &str) -> String {
     let mut hasher = Hasher::default();
     let hash = hasher
+        .opt_out_of_secret_key(true)
         .with_password(password)
         .hash()
         .unwrap();
