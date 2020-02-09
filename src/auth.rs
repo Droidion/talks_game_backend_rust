@@ -52,13 +52,13 @@ pub fn sign_in(login: &str, password: &str) -> Result<Session, &'static str> {
         inserted_at: Utc::now(),
         updated_at: Utc::now()
     };
-    add_session(&uuid, &session);
+    add_session(&uuid, &session)?;
     Ok(session)
 }
 
 /// Sign out a user
 pub fn sign_out(token: &str) -> Result<(), &'static str> {
     // TODO add clear cache from Redis
-    clear_session(token);
+    clear_session(token)?;
     Ok(())
 }

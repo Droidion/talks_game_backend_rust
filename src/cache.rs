@@ -28,9 +28,10 @@ pub fn add_session(token: &str, session: &Session) -> Result<(), &'static str> {
 /// Clear a session from redis cache
 pub fn clear_session(token: &str) -> Result<(), &'static str> {
     let mut con = establish_connection();
-    let res: RedisResult<()> = con.del(["session:", token].concat());
+    let res: RedisResult<i32> = con.del(["session:", token].concat());
     match res {
         Err(_) => Err("Could not clear session with given token from Redis"),
+        Ok(0) => Err("Token was not found in cache and was not deleted"),
         Ok(_) => Ok(()),
     }
 }
