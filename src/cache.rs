@@ -18,7 +18,8 @@ pub fn add_session(token: &str, session: &Session) -> Result<(), &'static str> {
     let mut con = establish_connection();
     let session_serialized = serde_json::to_string::<Session>(session)
         .expect("Could not serialize session");
-    let res: RedisResult<()> = con.set(["session:", token].concat(), session_serialized);
+    let res: RedisResult<()> = con
+        .set_ex(["session:", token].concat(), session_serialized, 180000);
     match res {
         Err(_) => Err("Could not cache session to Redis"),
         Ok(_) => Ok(()),
