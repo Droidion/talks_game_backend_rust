@@ -10,7 +10,7 @@ fn establish_connection() -> PgConnection {
 }
 
 /// Get User by their login from the database
-pub fn get_user_by_login(user_login: &str) -> Result<User, &str> {
+pub fn get_user_by_login(user_login: &str) -> Result<User, &'static str> {
     use crate::schema::users::dsl::*;
     let connection = establish_connection();
     let results = users

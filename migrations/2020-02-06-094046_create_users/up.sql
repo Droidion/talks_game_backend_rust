@@ -3,10 +3,10 @@ CREATE TABLE users
     id          bigserial    not null
         constraint users_pkey
             primary key,
-    team_number integer,
-    team_type   varchar(255),
-    login       varchar(255),
-    password    varchar(255),
+    team_number integer not null,
+    team_type   varchar(255) not null,
+    login       varchar(255) not null,
+    password    varchar(255) not null,
     inserted_at timestamp(0) not null,
     updated_at  timestamp(0) not null
 );
