@@ -6,6 +6,7 @@ pub mod auth;
 pub mod db;
 pub mod models;
 pub mod schema;
+pub mod cache;
 
 pub fn start_server() {
     println!("Starting the server...")

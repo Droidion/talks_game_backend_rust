@@ -1,4 +1,5 @@
 use chrono::Utc;
+use serde::{Deserialize, Serialize};
 
 #[derive(Queryable, Clone, Debug)]
 pub struct User {
@@ -11,9 +12,8 @@ pub struct User {
     pub updated_at: chrono::NaiveDateTime,
 }
 
-#[derive(Queryable, Clone, Debug)]
+#[derive(Queryable, Clone, Debug, Serialize, Deserialize)]
 pub struct Session {
-    pub id: i64,
     pub token: String,
     pub team_number: i32,
     pub team_type: String,

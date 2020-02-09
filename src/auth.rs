@@ -4,6 +4,7 @@ use argonautica::{Hasher, Verifier};
 use uuid::Uuid;
 use crate::models::Session;
 use crate::db::get_user_by_login;
+use crate::cache::{add_session, clear_session};
 use chrono::prelude::*;
 
 /// Generates new UUID
@@ -42,21 +43,21 @@ pub fn sign_in(login: &str, password: &str) -> Result<Session, &'static str> {
     let user = get_user_by_login(login)?;
     password_matches(&user.password, password)?;
     let uuid = generate_uuid();
-    let session = Session{
-        id: 0,
-        token: uuid,
+    let session = Session {
+        token: uuid.clone(),
         team_number: user.team_number,
         team_type: user.team_type,
         is_commander: false,
         inserted_at: Utc::now(),
         updated_at: Utc::now()
     };
-    // TODO add caching to Redis
+    add_session(&uuid, &session);
     Ok(session)
 }
 
 /// Sign out a user
 pub fn sign_out(token: &str) -> Result<(), &'static str> {
     // TODO add clear cache from Redis
+    clear_session(token);
     Ok(())
 }
