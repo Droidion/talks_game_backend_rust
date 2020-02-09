@@ -1,4 +1,4 @@
-#[derive(Queryable)]
+#[derive(Queryable, Clone, Debug)]
 pub struct User {
     pub id: i64,
     pub team_number: Option<i32>,
