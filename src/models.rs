@@ -12,7 +12,7 @@ pub struct User {
     pub updated_at: chrono::NaiveDateTime,
 }
 
-#[derive(Queryable, Clone, Debug, Serialize, Deserialize)]
+#[derive(Queryable, Clone, Debug, Serialize, Deserialize, juniper::GraphQLObject)]
 pub struct Session {
     pub token: String,
     pub team_number: i32,
