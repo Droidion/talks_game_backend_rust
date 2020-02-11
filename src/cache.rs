@@ -5,7 +5,7 @@ use redis::Connection;
 use std::env;
 use self::redis::RedisResult;
 
-fn establish_connection() -> Connection {
+pub fn establish_connection() -> Connection {
     let redis_url = env::var("REDIS_URL").expect("REDIS_URL must be set");
     let client = redis::Client::open(redis_url).expect("Could not create Redis client");
     client

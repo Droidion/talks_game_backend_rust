@@ -8,8 +8,6 @@ extern crate rocket;
 #[macro_use]
 extern crate diesel;
 
-extern crate ws;
-
 pub mod auth;
 pub mod cache;
 pub mod db;
